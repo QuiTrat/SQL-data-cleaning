@@ -100,7 +100,7 @@ Mô tả dữ liệu
 
 - Điều chỉnh năm từ 19xx thành 20xx:
 
---UPDATE club_member_info_cleaned 
+... UPDATE club_member_info_cleaned 
 --SET membership_date = CASE
 --	WHEN LENGTH(membership_date)=10 AND SUBSTRING(membership_date,7,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,7,2)='19','20')
 --	WHEN LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,6,2)='19','20')
@@ -113,3 +113,4 @@ Mô tả dữ liệu
 --LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19'
 --OR 
 --LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19'
+...
