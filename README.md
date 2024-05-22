@@ -12,7 +12,7 @@ Mô tả dữ liệu
 |Constantin de la cruz|35||co3@bloglines.com|402-688-7162|6 Monument Crossing,Omaha,Nebraska|Desktop Support Technician|10/20/2015|
 |  Gaylor Redhole|38|married|gredhole4@japanpost.jp|917-394-6001|88 Cherokee Pass,New York City,New York|Legal Assistant|5/29/2019|
 
-- Home work: clean data ghi vào readme các bước clean data
+
 ## Clean data
 ### Full_name:
 - Xoá khoảng trắng đầu và cuối: UPDATE club_member_info_cleaned SET full_name = trim(full_name)
@@ -25,7 +25,7 @@ Mô tả dữ liệu
 - Điều chỉnh các dòng có số tuổi = 0 thành số tuổi trung bình của toàn bộ dữ liệu: SELECT avg(age) FROM club_member_info_cleaned cmic2 / UPDATE club_member_info_cleaned SET age= 41 WHERE age=0
 
 ### Phone: Xoá các số phone không hợp lý
-``` SELECT full_name, email, phone, full_address  FROM club_member_info_cleaned cmic WHERE LENGTH(phone) <12
+```SELECT full_name, email, phone, full_address  FROM club_member_info_cleaned cmic WHERE LENGTH(phone) <12
 ```
   
 |full_name|email|phone|full_address|
@@ -46,7 +46,8 @@ Mô tả dữ liệu
 |CLAYBORNE PENELLI|cpenellirf@apple.com||01412 Dunning Place,Washington,District of Columbia|
 
 - Chuyển số phone về '' cho các số phone không hợp lý:
-  ``` UPDATE club_member_info_cleaned SET phone='' WHERE LENGTH (phone)<12
+  ```
+  UPDATE club_member_info_cleaned SET phone='' WHERE LENGTH (phone)<12
   ```
   
 |full_name|email|phone|full_address|
