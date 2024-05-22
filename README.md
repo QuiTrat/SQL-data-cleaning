@@ -25,7 +25,8 @@ Mô tả dữ liệu
 - Điều chỉnh các dòng có số tuổi = 0 thành số tuổi trung bình của toàn bộ dữ liệu: SELECT avg(age) FROM club_member_info_cleaned cmic2 / UPDATE club_member_info_cleaned SET age= 41 WHERE age=0
 
 ### Phone: Xoá các số phone không hợp lý
-- SELECT full_name, email, phone, full_address  FROM club_member_info_cleaned cmic WHERE LENGTH(phone) <12
+``` SELECT full_name, email, phone, full_address  FROM club_member_info_cleaned cmic WHERE LENGTH(phone) <12
+```
   
 |full_name|email|phone|full_address|
 |---------|-----|-----|------------|
@@ -44,7 +45,9 @@ Mô tả dữ liệu
 |JOELLA SURR|jsurrpo@meetup.com||775 Boyd Avenue,Houston,Texas|
 |CLAYBORNE PENELLI|cpenellirf@apple.com||01412 Dunning Place,Washington,District of Columbia|
 
-- Chuyển số phone về '' cho các số phone không hợp lý: UPDATE club_member_info_cleaned SET phone='' WHERE LENGTH (phone)<12
+- Chuyển số phone về '' cho các số phone không hợp lý:
+  ``` UPDATE club_member_info_cleaned SET phone='' WHERE LENGTH (phone)<12
+  ```
   
 |full_name|email|phone|full_address|
 |---------|-----|-----|------------|
@@ -65,7 +68,7 @@ Mô tả dữ liệu
 
 ### membership_date:
 - kiểm tra date có hợp lý
-- SELECT age, membership_date, (2024-
+```SELECT age, membership_date, (2024-
   CASE 
   	  WHEN LENGTH(membership_date)=10 THEN SUBSTRING(membership_date,7)
 	  WHEN LENGTH(membership_date)=8 THEN SUBSTRING(membership_date,5)
@@ -78,7 +81,7 @@ Mô tả dữ liệu
 	  WHEN LENGTH(membership_date)=8 THEN SUBSTRING(membership_date,5)
 	  WHEN LENGTH(membership_date)=9 THEN SUBSTRING(membership_date,6)
   END) >age
-
+```
 |age|membership_date|YEAR|
 |---|---------------|----|
 |46|3/12/1921|103|
@@ -101,16 +104,16 @@ Mô tả dữ liệu
 - Điều chỉnh năm từ 19xx thành 20xx:
 
 ```UPDATE club_member_info_cleaned 
---SET membership_date = CASE
---	WHEN LENGTH(membership_date)=10 AND SUBSTRING(membership_date,7,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,7,2)='19','20')
---	WHEN LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,6,2)='19','20')
---	WHEN LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,5,2)='19','20')
---END
+SET membership_date = CASE
+   WHEN LENGTH(membership_date)=10 AND SUBSTRING(membership_date,7,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,7,2)='19','20')
+   WHEN LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,6,2)='19','20')
+   WHEN LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,5,2)='19','20')
+ END
 
---WHERE
---LENGTH(membership_date)=10 AND SUBSTRING(membership_date,7,2)='19'
---OR 
---LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19'
---OR 
---LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19'
+WHERE
+LENGTH(membership_date)=10 AND SUBSTRING(membership_date,7,2)='19'
+OR 
+LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19'
+OR 
+LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19'
 ```
