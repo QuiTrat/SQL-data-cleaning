@@ -16,24 +16,32 @@ Mô tả dữ liệu
 ## Clean data
 ### Full_name:
 - Xoá khoảng trắng đầu và cuối:
-``` UPDATE club_member_info_cleaned SET full_name = trim(full_name)
+```
+UPDATE club_member_info_cleaned SET full_name = trim(full_name)
 ```
 - Thống nhất font chữ thành uppercase:
-  ```UPDATE club_member_info_cleaned SET full_name = UPPER(full_name)
+  ```
+  UPDATE club_member_info_cleaned SET full_name = UPPER(full_name)
   ```
 ### Age: Update các tuổi không hợp lý:
-```select full_name, age from club_member_info_cleaned cmic WHERE age >100 or age<0
+```
+Select full_name, age from club_member_info_cleaned cmic WHERE age >100 or age<0
 ```
 - Điều chỉnh các dòng có số tuổi >100:
-```UPDATE club_member_info_cleaned set age = FLOOR(age/10) where age>100
+
+```
+UPDATE club_member_info_cleaned set age = FLOOR(age/10) where age>100
 ```
 - Điều chỉnh các dòng có số tuổi = 0 thành số tuổi trung bình của toàn bộ dữ liệu:
-  ```SELECT avg(age) FROM club_member_info_cleaned cmic2 / UPDATE club_member_info_cleaned SET age= 41 WHERE age=0
+  
+  ```
+  SELECT avg(age) FROM club_member_info_cleaned cmic2 / UPDATE club_member_info_cleaned SET age= 41 WHERE age=0
   ```
 
 ### Phone: Xoá các số phone không hợp lý
 
-```SELECT full_name, email, phone, full_address  FROM club_member_info_cleaned cmic WHERE LENGTH(phone) <12
+```
+SELECT full_name, email, phone, full_address  FROM club_member_info_cleaned cmic WHERE LENGTH(phone) <12
 ```
   
 |full_name|email|phone|full_address|
