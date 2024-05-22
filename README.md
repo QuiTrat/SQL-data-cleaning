@@ -134,3 +134,5 @@ LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19'
 OR 
 LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19'
 ```
+## Kết thúc clean data
+Upload file club_member_info lên Github
