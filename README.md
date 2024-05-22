@@ -100,12 +100,7 @@ Mô tả dữ liệu
 
 - Điều chỉnh năm từ 19xx thành 20xx:
 
-  |CASE 
-	WHEN LENGTH(membership_date)=10 AND SUBSTRING(membership_date,7,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,7,2),20)
-	WHEN LENGTH(membership_date)=8 AND  SUBSTRING(membership_date,5,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,5,2),20)
-	WHEN LENGTH(membership_date)=9 AND  SUBSTRING(membership_date,6,2)='19' THEN replace(membership_date,SUBSTRING(membership_date,6,2),20)
-END|
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+ 
 |3/12/2021|
 |10/1/2012|
 |2/20/2016|
