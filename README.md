@@ -134,5 +134,26 @@ LENGTH(membership_date)=9 AND SUBSTRING(membership_date,6,2)='19'
 OR 
 LENGTH(membership_date)=8 AND SUBSTRING(membership_date,5,2)='19'
 ```
-## Kết thúc clean data
-Upload file club_member_info lên Github
+## Xoá dữ liệu bị trùng
+
+1. Các tên membber bị trùng
+```
+SELECT full_name, count(full_name)FROM club_member_info_cleaned cmic GROUP BY full_name HAVING count(full_name)>1
+```
+
+|full_name|count(full_name)|
+|---------|----------------|
+|ERWIN HUXTER|3|
+|GARRICK REGLAR|2|
+|GEORGES PREWETT|2|
+|HASKELL BRADEN|2|
+|MADDIE MORRALLEE|2|
+|NICKI FILLISKIRK|2|
+|OBED MACCAUGHEN|2|
+|SEYMOUR LAMBLE|2|
+|TAMQRAH DUNKERSLEY|2|
+
+   
+2. Lọc dữ liệu bị trùng
+4. xoá dữ liệu bị trùng
+
