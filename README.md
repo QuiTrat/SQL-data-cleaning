@@ -152,34 +152,11 @@ SELECT full_name, count(full_name)FROM club_member_info_cleaned cmic GROUP BY fu
 |OBED MACCAUGHEN|2|
 |SEYMOUR LAMBLE|2|
 |TAMQRAH DUNKERSLEY|2|
+  
 
-   
-2. Lọc dữ liệu bị trùng
- 
+2. Xoá dữ liệu bị trùng
+
 ```
-SELECT sub3.full_name, sub3.id, sub3.min_id from
-(SELECT cm.full_name, ROW_NUMBER() OVER (ORDER BY cm.full_name) AS id, sub2.min_id FROM club_member_info_cleaned cm
-JOIN (SELECT sub1.full_name, min(sub1.id) AS min_id FROM (SELECT full_name , ROW_NUMBER() OVER (ORDER BY full_name) AS id
-    FROM club_member_info_cleaned) AS sub1 GROUP BY sub1.full_name) AS sub2
-    ON cm.full_name = sub2.full_name) AS sub3
-    WHERE sub3.id>sub3.min_id
+DELETE FROM club_member_info_cleaned WHERE rowid NOT IN 
+(SELECT min(rowid) FROM club_member_info_cleaned GROUP BY full_name)
 ```
-
-|full_name|id|min_id|
-|---------|--|------|
-|ERWIN HUXTER|655|654|
-|ERWIN HUXTER|656|654|
-|GARRICK REGLAR|746|745|
-|GEORGES PREWETT|777|776|
-|HASKELL BRADEN|872|871|
-|MADDIE MORRALLEE|1256|1255|
-|NICKI FILLISKIRK|1436|1435|
-|OBED MACCAUGHEN|1469|1468|
-|SEYMOUR LAMBLE|1716|1715|
-|TAMQRAH DUNKERSLEY|1818|1817|
-
-
-
-   
-3. xoá dữ liệu bị trùng
-
